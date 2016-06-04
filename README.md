@@ -95,6 +95,7 @@ return [
             ]
         ],
     ],
+];
 ```
 
 Add messages interpreter class `@app/components/DemoEventInterpreter` with your handlers for different routing keys:
