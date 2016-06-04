@@ -67,36 +67,34 @@ return [
                 ... ... 
             ],
         ],
-        ...
-        'controllerMap' => [
-            'cron' => [
-                'class' => 'mitalcoi\cronjobs\CronController',
-                'interpreterPath' => '/usr/bin/php',
-                'logsDir' => '/data/logs/cron',
-                'logFileName' => '%L/php-%C.%A.%D.log',
-                'bootstrapScript' => (dirname(dirname(__FILE__)) .'/yii',
-                'cronJobs' =>[
-                    'listener-manage/keep' => [
-                        'cron'      => '* * * * *',
-                    ]
-                ],
-            ]
-            ...
-            'listener' => [
-                'class' => 'hzted123\amqp\controllers\AmqpListenerController',
-                'interpreters' => [
-                    'queue_name' => '@app\components\DemoEventInterpreter', // interpreters for each queue
-                ],
-            ]
-            ...
+    ],
+    ...
+    'controllerMap' => [
+        'cron' => [
+            'class' => 'mitalcoi\cronjobs\CronController',
+            'interpreterPath' => '/usr/bin/php',
+            'logsDir' => '/data/logs/cron',
+            'logFileName' => '%L/php-%C.%A.%D.log',
+            'bootstrapScript' => (dirname(dirname(__FILE__)) .'/yii',
+            'cronJobs' =>[
+                'listener-manage/keep' => [
+                    'cron'      => '* * * * *',
+                ]
+            ],
         ],
-        ...
+        'listener' => [
+            'class' => 'hzted123\amqp\controllers\AmqpListenerController',
+            'interpreters' => [
+                'queue_name' => '@app\components\DemoEventInterpreter', // interpreters for each queue
+            ],
+        ],
         'listener-manage' => [      //consumer keeper
             'class' => 'hzted123\amqp\controllers\ListenerManageController',
             'configs' => [
                 ['queue' => 'queue_name', 'count' => 2]      // Keeping the number of consumers
             ]
         ],
+    ],
 ```
 
 Add messages interpreter class `@app/components/DemoEventInterpreter` with your handlers for different routing keys:
