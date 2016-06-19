@@ -2,8 +2,8 @@
     "name": "hzted123/yii2-amqp",
     "description": "a consumer manage tool for amqp",
     "type": "yii2-extension",
-    "keywords": ["yii2","extension"],
-    "license": "BSD-3-Clause",
+    "keywords": ["yii2","extension", "amqp"],
+    "license": "MIT",
     "authors": [
         {
             "name": "songming",
@@ -14,7 +14,7 @@
         "yiisoft/yii2": "*",
         "php": ">=5.3.0",
         "php-amqplib/php-amqplib": "~2.0",
-        "mitalcoi/yii2-cronjobs": "*"
+        "hzted123/cronjobs": "*"
     },
     "autoload": {
         "psr-4": {
