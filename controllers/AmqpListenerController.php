@@ -76,7 +76,8 @@ class AmqpListenerController extends \yii\console\Controller
             } catch (\Exception $exc){
                 $error_info = "consumer fail:" . $exc->getMessage()
                     .PHP_EOL."info:".print_r($info, true)
-                    .PHP_EOL."body:".PHP_EOL.print_r($msg->body, true);
+                    .PHP_EOL."body:".PHP_EOL.print_r($msg->body, true)
+                    .PHP_EOL.$exc->getTraceAsString();
                 \Yii::warning($error_info, __METHOD__);
                 $format = [Console::FG_RED];
                 Console::stdout(Console::ansiFormat($error_info . PHP_EOL, $format));
