@@ -62,7 +62,7 @@ return [
                 'queue_name'    =>  [
                     'options' => ['passive' => false, 'auto_delete' => false, 'durable' => true, 'exclusive' => false],
                     'arguments' => ['x-max-length' => ['I', 1000000], 'x-max-length-bytes' => ['I', 300485760]],
-                    'binds' => ['exchange_name' => 'route']
+                    'binds' => ['route' => 'exchange_name']
                 ],
                 ... ... 
             ],
@@ -157,3 +157,15 @@ Also you can create controllers for your needs. Just use for your web controller
 `hzted123\amqp\controllers\AmqpConsoleController` instead of `yii\web\Controller` and for your console controllers
 class `hzted123\amqp\controllers\AmqpConsoleController` instead of `yii\console\Controller`. AMQP connection will be
 available with property `connection`. AMQP channel will be available with property `channel`.
+
+Note: The configuration information, starting with version 1.0.2, exchange and route switching position, for multiple routes binding to a queue
+```php
+    'queue_configs' => [
+        'queue_name'    =>  [
+            'options' => ['passive' => false, 'auto_delete' => false, 'durable' => true, 'exclusive' => false],
+            'arguments' => ['x-max-length' => ['I', 1000000], 'x-max-length-bytes' => ['I', 300485760]],
+            'binds' => ['route' => 'exchange_name']
+        ],
+        ... ... 
+    ],
+```

@@ -200,7 +200,7 @@ class Amqp extends Component
         $queue_config =  $this->queue_configs[$queue];
         $queueName = $this->queue_declare($queue);
 
-        foreach ($queue_config['binds'] as $exchange => $routing_key) {
+        foreach ($queue_config['binds'] as $routing_key => $exchange ) {
             if(!key_exists($exchange, $this->exchange_configs)) {
                 throw new Exception('amqp exchange: '.$exchange. ' no found.');
             }

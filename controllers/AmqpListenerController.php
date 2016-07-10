@@ -87,6 +87,10 @@ class AmqpListenerController extends \yii\console\Controller
             if (!isset($this->interpreters[$this->queue])) {
                 $interpreter = new AmqpInterpreter();
             }
+            $error_info = "Unknown routing key '$routingKey' for exchange '$this->queue'.";
+            $error_info .= PHP_EOL .$msg->body;
+            \Yii::warning($error_info , __METHOD__);
+
             $interpreter->log(
                 sprintf("Unknown routing key '%s' for exchange '%s'.", $routingKey, $this->queue),
                 $interpreter::MESSAGE_ERROR
