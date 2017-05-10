@@ -47,7 +47,7 @@ class ListenerManageController extends Controller
         echo $command.PHP_EOL;
         $now_count = shell_exec($command);
         echo "number of processes :". (int)$now_count. PHP_EOL;
-        $add = $count - $now_count;
+        $add = (int)$count - (int)$now_count;
         if ($add <= 0) {
             return false;
         }
